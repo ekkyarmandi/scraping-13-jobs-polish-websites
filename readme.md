@@ -4,7 +4,7 @@ In this project I write and manage 13 unique scraping script to scrape job ads f
 * [holandia.jober.pl](https://holandia.jober.pl/?p=1)
 * [en.silverhand.eu](https://en.silverhand.eu/candidate/jobs/?q=&location=)
 * [praca-holandia24.pl](http://praca-holandia24.pl/)
-* [covebo.pl[]](https://www.covebo.pl/oferty-pracy/)
+* [covebo.pl](https://www.covebo.pl/oferty-pracy/)
 * [timingjobs.pl](https://timingjobs.pl/)
 * [jobs.pl](https://www.jobs.pl/praca-za-granica/praca-fizyczna/niemcy?locations[0]=8470&locations[1]=8266&locations[2]=8244&locations[3]=8236&locations[4]=8299&locations[5]=8324&locations[6]=8281&locations[7]=8419&locations[8]=8389)
 * [eena.pl](https://eena.pl/aktualne-oferty-pracy-w-holandii.html)
