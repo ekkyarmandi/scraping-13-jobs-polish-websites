@@ -17,4 +17,24 @@ In this project I write and manage 13 unique scraping script to scrape job ads f
 
 ## Script Development
 
-Most of the script only using requests, BeautifulSoup, and pandas module. For more details, requests script used to make a GET/POST requests into the websites and rendering the html on the backend, while BeautifulSoup module used to extract the desired data from html tags.
+Most of the script only using requests, BeautifulSoup, and pandas module. For more details, requests script used to make a GET/POST request to the websites and rendering the html on the backend, while BeautifulSoup module used to extract the desired data from html tags.  
+
+Pandas module used for drop some missing value and then writeout the data as an Excel spreadsheet file.
+
+## How to Run the Script
+
+First make sure you install all the requirements:
+```
+pip install -r requirements.txt
+```
+
+Second, on your terminal type and execute:
+
+```
+python app.py
+```
+You will get 13 excel files on the as the output.
+
+## NOTES: What I Learned from this Project
+
+* I found the way to write data to more than one sheet using pandas.
