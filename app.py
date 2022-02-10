@@ -27,6 +27,10 @@ msg = f"Scraping {len(websites)} Job Ads"
 for name in tqdm(websites,msg):
     jobs = scrape(name)
     df = pd.DataFrame(jobs)
+    df = df.drop_duplicates(subset="Link")
+    df = df.dropna(axis=0)
+    if df.shape[0] > 500:
+        df = df.loc[0:500]
     df.to_excel(
         writer,
         sheet_name = name,

@@ -263,11 +263,8 @@ def scrape(name):
         i = 1
         data = []
         for e in jobs:
-            print(i,end=",")
-            url = e['url']
-            title = e['title']
             try:
-                page = render_html(url)
+                page = render_html(e['url'])
                 detail_dict = get_details(page)
             except: detail_dict = None            
             if detail_dict != None:            
@@ -276,8 +273,8 @@ def scrape(name):
                 city = detail_dict['Miejscowość']
                 country = detail_dict['Państwo']
                 job = {
-                    "Link": url,
-                    "Job Title": title,
+                    "Link": e['url'],
+                    "Job Title": e['title'],
                     "Agency (Firma)": agency,
                     "Wage (Pansja)": wage,
                     "City (Miejscowosc)": city,
@@ -433,6 +430,7 @@ def scrape(name):
         # scrape the initial
         url = "https://www.sbaflex.com/pl_PL/vacatures"
         urls, max_page = get_urls(url,including="max_page")
+        curr_year = datetime.now().year
 
         # scrape jobs
         j = 0
@@ -455,6 +453,7 @@ def scrape(name):
                 try: value = page.find("span",class_=key).get_text().strip()
                 except: value = nan
                 items.update({key:value})
+            
             job = {
                 'Link': url,
                 'Active Form': items['date'],
