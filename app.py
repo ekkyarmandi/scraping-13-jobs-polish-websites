@@ -19,7 +19,7 @@ websites = [
     "startpeople",
     "sbaflex",
     "werkze",
-    "holandiajoberall",
+    "holandiajoberall"
 ]
 
 writer = pd.ExcelWriter("results.xlsx")
@@ -27,6 +27,7 @@ msg = f"Scraping {len(websites)} Job Ads"
 for name in tqdm(websites,msg):
     jobs = scrape(name)
     df = pd.DataFrame(jobs)
+    df = df.dropna()
     df.to_excel(
         writer,
         sheet_name = name,
