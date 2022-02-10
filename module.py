@@ -76,7 +76,6 @@ def get_jobs_startpeople(url,including=None):
 
 # tags: used in pran
 def get_jobs_pran(url,include=None):
-
     def get_max(page):
         pagination = page.find("div",id="pagination")
         numbers = []
@@ -87,17 +86,22 @@ def get_jobs_pran(url,include=None):
             except: pass
         max_page = max(numbers)
         return max_page
-
     jobs = []
     page = render_html(url)
     for a in page.find_all("a",class_=["job-block","d-block"]):
         try:
-            link = a['data-url']
-            title = a['data-title']
-            city = a['data-location']
-            wage = a.find("p").find_next("p").get_text()
-            hours = a['data-hours']
-            type_ = a['data-industry']
+            try: link = a['data-url']
+            except: link = nan
+            try: title = a['data-title']
+            except: title = nan
+            try: city = a['data-location']
+            except: city = nan
+            try: wage = a.find("p").find_next("p").get_text()
+            except: wage = nan
+            try: hours = a['data-hours']
+            except: hours = nan
+            try: type_ = a['data-industry']
+            except: type_ = nan
             job = {
                 "Link": link,
                 "Title": title,
@@ -426,9 +430,11 @@ def scrape(name):
         url = "https://startpeople.nl/en/candidate/vacancies"
         jobs, max_page = get_jobs_startpeople(url,including="max_page")
         for i in range(2,max_page+1):
-            url = f"https://startpeople.nl/en/candidate/vacancies?refinementList[language][0]=en&page={i}"
-            new_jobs = get_jobs_startpeople(url)
-            jobs.extend(new_jobs)
+            try:
+                url = f"https://startpeople.nl/en/candidate/vacancies?refinementList[language][0]=en&page={i}   "
+                new_jobs = get_jobs_startpeople(url)
+                jobs.extend(new_jobs)
+            except: break
         return jobs
     
     elif name == "sbaflex":
