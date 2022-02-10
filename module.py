@@ -252,8 +252,7 @@ def scrape(name):
             page = render_html(url)
             a_tags = page.find("table",class_="job-results").find_all("a")
             urls.extend(a_tags)
-            i += 1
-            
+            i += 1            
         jobs = []
         for i in range(len(urls)):
             url = urls[i]['href']
@@ -264,25 +263,18 @@ def scrape(name):
         i = 1
         data = []
         for e in jobs:
-            
+            print(i,end=",")
             url = e['url']
             title = e['title']
             try:
                 page = render_html(url)
                 detail_dict = get_details(page)
-            except: detail_dict = None
-            
-            if detail_dict != None:
-            
-                try: agency = detail_dict['Firma']
-                except: agency = nan
-                try: wage = detail_dict['Pensja']
-                except: wage = nan
-                try: city = detail_dict['Miejscowość']
-                except: city = nan
-                try: country = detail_dict['Państwo']
-                except: country = nan
-
+            except: detail_dict = None            
+            if detail_dict != None:            
+                agency = detail_dict['Firma']
+                wage = detail_dict['Pensja']
+                city = detail_dict['Miejscowość']
+                country = detail_dict['Państwo']
                 job = {
                     "Link": url,
                     "Job Title": title,
@@ -293,7 +285,7 @@ def scrape(name):
                 }
                 data.append(job)
             i += 1
-        return jobs
+        return data
 
     elif name == "silverhand":
 
