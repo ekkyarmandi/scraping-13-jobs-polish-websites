@@ -248,7 +248,6 @@ def scrape(name):
         urls = []
         max_target = 1000
         while len(urls) < max_target:
-            print(i,end=",")
             url = f"https://holandia.jober.pl/?p={i}"
             page = render_html(url)
             a_tags = page.find("table",class_="job-results").find_all("a")
